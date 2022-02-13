@@ -4,6 +4,7 @@ class BackTest:
         self.remained_money = 0
         self.hold = {}
         self.hold_price = {}
+        self.divended = 0
 
     def buy(self, stock, money, start_date, col_ind="Open", month_index=0):
         price = self.data[stock][self.data[stock].index >=
@@ -27,21 +28,27 @@ class BackTest:
     def add_debt(self, debt):
         self.remained_money -= debt
 
-    def all_sell_profit(self, date, col_ind='Open'):
+    def all_sell_profit(self, date, col_ind='Open', tax_free: int = 200, tax_ratio: float = 0):
         profit = {}
         for key in self.hold.keys():
             stock = self.hold[key]
             cur_value = self.data[key][self.data[key].index >=
                                        date][col_ind][0] * stock
             profit[key] = cur_value - self.hold_price[key] * self.hold[key]
+            if profit[key] > 0:
+                tax = (self.divended+profit[key]-tax_free) * tax_ratio
+                if tax < 0:
+                    tax = 0
+                profit[key] -= tax
         return profit
 
-    def all_sell_profit_percent(self, date, col_ind='Open'):
-        profit = {}
+    def all_sell_profit_percent(self, date, col_ind='Open', tax_free: int = 200, tax_ratio: float = 0):
+        profit = self.all_sell_profit(date, col_ind, tax_free, tax_ratio)
         for key in self.hold.keys():
-            stock = self.hold[key]
-            cur_value = self.data[key][self.data[key].index >=
-                                       date][col_ind][0] * stock
-            profit[key] = cur_value - self.hold_price[key] * self.hold[key]
             profit[key] = profit[key]/(self.hold_price[key] * self.hold[key])
         return profit
+
+    def add_money(self, money, dived: bool = False):
+        self.remained_money += money
+        if dived:
+            self.divended += money
