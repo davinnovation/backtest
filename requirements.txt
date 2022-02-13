@@ -2,3 +2,4 @@ finance-datareader
 streamlit
 beautifulsoup4
 seaborn
+joblib
