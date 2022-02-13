@@ -56,12 +56,12 @@ def app():
     fig, ax = plt.subplots()
     dd = su.year_date_df(open_buy_hold, iters)
     sns.heatmap(dd.pivot("start_year", "date", "earns"), ax=ax)
-    st.write(fig)
+    st.pyplot(fig)
 
     fig, ax = plt.subplots()
     dd = su.year_date_df(close_buy_hold, iters)
     sns.heatmap(dd.pivot("start_year", "date", "earns"), ax=ax)
-    st.write(fig)
+    st.pyplot(fig)
 
     def new_func(x):
         years, day = x
@@ -87,9 +87,9 @@ def app():
     fig, ax = plt.subplots()
     dd = su.year_date_df(open_buy_hold, iters)
     sns.heatmap(dd.pivot("start_year", "date", "earns"), ax=ax)
-    st.write(fig)
+    st.pyplot(fig)
 
     fig, ax = plt.subplots()
     dd = su.year_date_df(close_buy_hold, iters)
     sns.heatmap(dd.pivot("start_year", "date", "earns"), ax=ax)
-    st.write(fig)
+    st.pyplot(fig)
