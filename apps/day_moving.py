@@ -11,7 +11,14 @@ import joblib
 import utils.strategy_util as su
 import itertools
 
+import plotly.graph_objects as go
 import numpy as np
+
+
+def df_to_plotly(df):
+    return {'z': df.values.tolist(),
+            'x': df.columns.tolist(),
+            'y': df.index.tolist()}
 
 
 def app():
@@ -24,7 +31,7 @@ def app():
 
     START_YEAR = 1991
     END_YEAR = 2021
-    PERIOD = int(st.text_input("period", "5"))
+    PERIOD = int(st.text_input("period", "20"))
     year_iters = su.period_year_iter(START_YEAR, END_YEAR-PERIOD, PERIOD)
     day_range = list(range(1, 28))
 
@@ -53,15 +60,15 @@ def app():
 
     st.line_chart(data=result, width=0, height=0, use_container_width=True)
 
-    fig, ax = plt.subplots()
     dd = su.year_date_df(open_buy_hold, iters)
-    sns.heatmap(dd.pivot("start_year", "date", "earns"), ax=ax)
-    st.pyplot(fig)
+    fig = go.Figure(data=go.Heatmap(df_to_plotly(
+        dd.pivot("start_year", "date", "earns"))))
+    st.plotly_chart(fig, use_container_width=True)
 
-    fig, ax = plt.subplots()
     dd = su.year_date_df(close_buy_hold, iters)
-    sns.heatmap(dd.pivot("start_year", "date", "earns"), ax=ax)
-    st.pyplot(fig)
+    fig = go.Figure(data=go.Heatmap(df_to_plotly(
+        dd.pivot("start_year", "date", "earns"))))
+    st.plotly_chart(fig, use_container_width=True)
 
     def new_func(x):
         years, day = x
@@ -84,12 +91,12 @@ def app():
 
     st.line_chart(data=result, width=0, height=0, use_container_width=True)
 
-    fig, ax = plt.subplots()
     dd = su.year_date_df(open_buy_hold, iters)
-    sns.heatmap(dd.pivot("start_year", "date", "earns"), ax=ax)
-    st.pyplot(fig)
+    fig = go.Figure(data=go.Heatmap(df_to_plotly(
+        dd.pivot("start_year", "date", "earns"))))
+    st.plotly_chart(fig, use_container_width=True)
 
-    fig, ax = plt.subplots()
     dd = su.year_date_df(close_buy_hold, iters)
-    sns.heatmap(dd.pivot("start_year", "date", "earns"), ax=ax)
-    st.pyplot(fig)
+    fig = go.Figure(data=go.Heatmap(df_to_plotly(
+        dd.pivot("start_year", "date", "earns"))))
+    st.plotly_chart(fig, use_container_width=True)
