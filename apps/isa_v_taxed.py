@@ -17,7 +17,7 @@ def df_to_plotly(df):
 
 
 TAX_TYPE = {
-    "US": (2500, 2000),
+    "US": (0, 0),
     "KR": (0, 2000000)
 }
 
