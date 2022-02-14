@@ -60,10 +60,10 @@ def app():
         if buy_type == "Buy and Hold":
             return strategy.single_buy_and_hold(target_stock, years=years, monthly_money=int(monthly_money),
                                                 monthly_debt_ratio=float(debt_ratio), buy_day=1)[-1].all_sell_profit_percent(
-                                                    sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.09)[target_stock]
+                                                    sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.099)[target_stock]
         else:
             return strategy.single_monthly_buy(target_stock, years=years, monthly_money=int(monthly_money), buy_day=1)[-1].all_sell_profit_percent(
-                sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.09)[target_stock]
+                sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.099)[target_stock]
 
     taxed = joblib.Parallel(n_jobs=8)(joblib.delayed(tax_func)(x)
                                       for x in iters)
@@ -107,10 +107,10 @@ def app():
             if buy_type == "Buy and Hold":
                 return strategy.single_buy_and_hold(target_stock, years=years, monthly_money=int(monthly_money),
                                                     monthly_debt_ratio=float(debt_ratio), buy_day=1, add_div=True, tax_type="ISA")[-1].all_sell_profit_percent(
-                                                        sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.09)[target_stock]
+                                                        sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.099)[target_stock]
             else:
                 return strategy.single_monthly_buy(target_stock, years=years, monthly_money=int(monthly_money), buy_day=1, add_div=True, tax_type="ISA")[-1].all_sell_profit_percent(
-                    sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.09)[target_stock]
+                    sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.099)[target_stock]
 
         taxed = joblib.Parallel(n_jobs=8)(joblib.delayed(tax_func)(x)
                                           for x in iters)
@@ -152,10 +152,10 @@ def app():
             if buy_type == "Buy and Hold":
                 return strategy.single_buy_and_hold(target_stock, years=years, monthly_money=int(monthly_money),
                                                     monthly_debt_ratio=float(debt_ratio), buy_day=1, add_div=True, tax_type="ISA", reinvest=True)[-1].all_sell_profit_percent(
-                                                        sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.09)[target_stock]
+                                                        sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.099)[target_stock]
             else:
                 return strategy.single_monthly_buy(target_stock, years=years, monthly_money=int(monthly_money), buy_day=1, add_div=True, tax_type="ISA", reinvest=True)[-1].all_sell_profit_percent(
-                    sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.09)[target_stock]
+                    sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.099)[target_stock]
 
         taxed = joblib.Parallel(n_jobs=8)(joblib.delayed(tax_func)(x)
                                           for x in iters)
@@ -197,10 +197,10 @@ def app():
             if buy_type == "Buy and Hold":
                 return strategy.single_buy_and_hold(target_stock, years=years, monthly_money=int(monthly_money),
                                                     monthly_debt_ratio=float(debt_ratio), buy_day=1, add_div=True, tax_type="ISA")[-1].all_sell_profit_percent(
-                                                        sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.09, add_benefit=408000)[target_stock]
+                                                        sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.099, add_benefit=408000)[target_stock]
             else:
                 return strategy.single_monthly_buy(target_stock, years=years, monthly_money=int(monthly_money), buy_day=1, add_div=True, tax_type="ISA")[-1].all_sell_profit_percent(
-                    sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.09, add_benefit=408000)[target_stock]
+                    sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.099, add_benefit=408000)[target_stock]
 
         taxed = joblib.Parallel(n_jobs=8)(joblib.delayed(tax_func)(x)
                                           for x in iters)
@@ -242,10 +242,10 @@ def app():
             if buy_type == "Buy and Hold":
                 return strategy.single_buy_and_hold(target_stock, years=years, monthly_money=int(monthly_money),
                                                     monthly_debt_ratio=float(debt_ratio), buy_day=1, add_div=True, tax_type="ISA", reinvest=True)[-1].all_sell_profit_percent(
-                                                        sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.09, add_benefit=408000)[target_stock]
+                                                        sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.099, add_benefit=408000)[target_stock]
             else:
                 return strategy.single_monthly_buy(target_stock, years=years, monthly_money=int(monthly_money), buy_day=1, add_div=True, tax_type="ISA", reinvest=True)[-1].all_sell_profit_percent(
-                    sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.09, add_benefit=408000)[target_stock]
+                    sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.099, add_benefit=408000)[target_stock]
 
         taxed = joblib.Parallel(n_jobs=8)(joblib.delayed(tax_func)(x)
                                           for x in iters)
