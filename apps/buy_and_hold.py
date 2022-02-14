@@ -5,7 +5,7 @@ import utils.utils as utils
 from utils.div_data import data as div_data
 
 TAX_TYPE = {
-    "US": (2500, 2000),
+    "US": (0, 0),
     "KR": (50000000, 2000000)
 }
 
@@ -50,10 +50,10 @@ def app():
 
     if isa_mode:
         st.subheader(
-            f"isa buy and hold {result[-1].all_sell_profit_percent(sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.09)}")
+            f"isa buy and hold {result[-1].all_sell_profit_percent(sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.099)}")
 
         st.subheader(
-            f"isa monthly buy {result2[-1].all_sell_profit_percent(sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.09)}")
+            f"isa monthly buy {result2[-1].all_sell_profit_percent(sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.099)}")
 
     result = utils.result2df(result[1], [result[0], result2[0]], [
         f"buy & hold _ {debt_ratio}", "monthly buy"])
@@ -82,7 +82,7 @@ def app():
         result2 = strategy.single_monthly_buy(target_stock, years=list(
             range(*years)), monthly_money=int(monthly_money), tax_type="ISA")
         st.subheader(
-            f"isa buy and hold {result[-1].all_sell_profit_percent(sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.09)}")
+            f"isa buy and hold {result[-1].all_sell_profit_percent(sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.099)}")
 
         st.subheader(
-            f"isa monthly buy {result2[-1].all_sell_profit_percent(sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.09)}")
+            f"isa monthly buy {result2[-1].all_sell_profit_percent(sell_years, tax_free=TAX_TYPE[tax_type][1], tax_ratio=0.099)}")
