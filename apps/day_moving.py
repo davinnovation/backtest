@@ -29,7 +29,7 @@ def app():
     monthly_money = st.text_input("monthly money", "1000")
     debt_ratio = st.text_input("init debt ratio", "0")
 
-    START_YEAR = 1991
+    START_YEAR = 1993
     END_YEAR = 2021
     PERIOD = int(st.text_input("period", "20"))
     year_iters = su.period_year_iter(START_YEAR, END_YEAR-PERIOD, PERIOD)

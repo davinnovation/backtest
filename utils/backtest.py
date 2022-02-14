@@ -28,7 +28,7 @@ class BackTest:
     def add_debt(self, debt):
         self.remained_money -= debt
 
-    def all_sell_profit(self, date, col_ind='Open', tax_free: int = 200, tax_ratio: float = 0):
+    def all_sell_profit(self, date, col_ind='Open', tax_free: int = 2000, tax_ratio: float = 0):
         profit = {}
         for key in self.hold.keys():
             stock = self.hold[key]
@@ -42,10 +42,11 @@ class BackTest:
                 profit[key] -= tax
         return profit
 
-    def all_sell_profit_percent(self, date, col_ind='Open', tax_free: int = 200, tax_ratio: float = 0):
+    def all_sell_profit_percent(self, date, col_ind='Open', tax_free: int = 2000, tax_ratio: float = 0, add_benefit: float = 0):
         profit = self.all_sell_profit(date, col_ind, tax_free, tax_ratio)
         for key in self.hold.keys():
-            profit[key] = profit[key]/(self.hold_price[key] * self.hold[key])
+            profit[key] = (profit[key]+add_benefit) / \
+                (self.hold_price[key] * self.hold[key])
         return profit
 
     def add_money(self, money, dived: bool = False):

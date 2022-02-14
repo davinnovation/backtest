@@ -19,3 +19,11 @@ def year_date_df(data, iters):
         df_plot = df_plot.append(
             {"start_year": year[0], "date": day, "earns": data[i]}, ignore_index=True)
     return df_plot
+
+
+def year_df(data, iters):
+    df_plot = pd.DataFrame(columns=["start_year", "invest_length", "earns"])
+    for i, (year) in enumerate(iters):
+        df_plot = df_plot.append(
+            {"start_year": year[0], "invest_length": len(year), "earns": data[i]}, ignore_index=True)
+    return df_plot
